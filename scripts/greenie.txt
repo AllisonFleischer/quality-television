@@ -1,0 +1,18 @@
+. "These guys should be fired!"
+: "l"
+send "forcefield1" "start"
+put c0f CustomBlock pa4 to EAST
+rel to self
+if c?? Floor p?? at 0 -1 then "distract"
+rel to self
+if c?? Floor p?? at 0 1 then "distract"
+rel to self
+if c?? Floor p?? at -1 0 then "distract"
+rel to self
+if c?? Floor p?? at 1 0 then "distract"
+cycle 1
+goto "l"
+: "distract"
+send "forcefield1" "dormant"
+char 'ò'
+put c0f CustomBlock pa5 to EAST

@@ -1,0 +1,8 @@
+. "Lights in the subway level."
+: "l"
+go WEST for 1
+if "thisx" = 0 then "#warp"
+goto "l"
+: "#warp"
+gotoxy 79 "thisy"
+goto "#return"

@@ -1,0 +1,22 @@
+. "WASD direction changing."
+. "(Also AZERTY and dvorak support for some reason)"
+end
+: "keyw"
+: "keyz"
+: "key,"
+set "playerfacedir" to 0
+end
+: "keys"
+: "keyo"
+set "playerfacedir" to 1
+end
+: "keyd"
+: "keye"
+set "playerfacedir" to 2
+end
+: "keya"
+: "keyq"
+set "playerfacedir" to 3
+end
+: "stop"
+lockself

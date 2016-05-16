@@ -1,0 +1,40 @@
+. "These guys are jerks!"
+. "c08 CustomBlock p09"
+: "l"
+rel to self
+if c?? Floor p?? at 0 -1 then "distract"
+rel to self
+if c?? Floor p?? at 0 1 then "distract"
+rel to self
+if c?? Floor p?? at -1 0 then "distract"
+rel to self
+if c?? Floor p?? at 1 0 then "distract"
+rel to self
+if c08 CustomBlock p09 at 0 -1 then "distract"
+rel to self
+if c08 CustomBlock p09 at 0 1 then "distract"
+rel to self
+if c08 CustomBlock p09 at -1 0 then "distract"
+rel to self
+if c08 CustomBlock p09 at 1 0 then "distract"
+if touching ANYDIR then "checkplayer"
+: "returncheckplayer"
+char 'ô'
+color c0c
+go SEEK for 1
+if touching ANYDIR then "hurt"
+cycle 1
+goto "l"
+: "distract"
+char 'ò'
+cycle 1
+goto "l"
+: "checkplayer"
+if at BENEATH of player is c?? Floor p00 then "distract"
+goto "returncheckplayer"
+: "hurt"
+take 10 HEALTHS
+color c08
+* "Ouch!"
+wait for 5
+goto "l"

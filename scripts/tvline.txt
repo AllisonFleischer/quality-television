@@ -1,0 +1,368 @@
+. "This controls the TV Rays."
+. "This code is awful and it's best not to think about it too much."
+: "l"
+cycle 1
+change from c?? Floor p00 to c07 Space p00
+set "light0" to 0
+set "light1" to 0
+set "light2" to 0
+set "light3" to 0
+set "light4" to 0
+if BENEATH player is c?? Floor p?? then "#lightuplayer"
+if any c08 CustomBlock p09 then "linemake"
+goto "l"
+: "#lightuplayer"
+put c07 Space p00 to BENEATH of player
+goto "#return"
+: "linemake"
+if "tvd" = 0 then "mkn"
+if "tvd" = 1 then "mks"
+if "tvd" = 2 then "mke"
+if "tvd" = 3 then "mkw"
+goto "l"
+
+
+: "mke"
+set "local" to "('tvx'+1)"
+set "local2" to "tvy"
+set "xpos" to "tvx"
+set "ypos" to "tvy"
+rel to counters
+if blocked EAST then "stop"
+put c0f Floor p00 at "local" "local2"
+
+: "mke2"
+inc "local" by 1
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "stop"
+put c0f Floor p00 at "local" "local2"
+dec "local2" by 1
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light13off"
+if "light1" = 1 then "mkes1"
+put c07 Floor p00 at "local" "local2"
+: "mkes1"
+inc "local2" by 2
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light24off"
+if "light2" = 1 then "mkes2"
+put c07 Floor p00 at "local" "local2"
+: "mkes2"
+dec "local2" by 1
+
+: "mke3"
+inc "local" by 1
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light0off"
+if "light0" = 1 then "mkes6"
+put c0f Floor p00 at "local" "local2"
+: "mkes6"
+dec "local2" by 1
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light1off"
+if "light1" = 1 then "mkes3"
+put c07 Floor p00 at "local" "local2"
+: "mkes3"
+inc "local2" by 2
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light2off"
+if "light2" = 1 then "mkes4"
+put c07 Floor p00 at "local" "local2"
+: "mkes4"
+dec "local2" by 3
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light3off"
+if "light3" = 1 then "mkes5"
+put c08 Floor p00 at "local" "local2"
+: "mkes5"
+inc "local2" by 4
+set "xpos" to "('local'-1)"
+set "ypos" to "local2"
+rel to counters
+if blocked EAST then "#light4off"
+if "light4" = 1 then "mkes7"
+put c08 Floor p00 at "local" "local2"
+: "mkes7"
+dec "local2" by 2
+goto "mke3"
+
+
+
+: "mkw"
+set "local" to "('tvx'-1)"
+set "local2" to "tvy"
+set "xpos" to "tvx"
+set "ypos" to "tvy"
+rel to counters
+if blocked west then "stop"
+put c0f Floor p00 at "local" "local2"
+
+: "mkw2"
+dec "local" by 1
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "stop"
+put c0f Floor p00 at "local" "local2"
+dec "local2" by 1
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light13off"
+if "light1" = 1 then "mkws1"
+put c07 Floor p00 at "local" "local2"
+: "mkws1"
+inc "local2" by 2
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light24off"
+if "light2" = 1 then "mkws2"
+put c07 Floor p00 at "local" "local2"
+: "mkws2"
+dec "local2" by 1
+
+: "mkw3"
+dec "local" by 1
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light0off"
+if "light0" = 1 then "mkws6"
+put c0f Floor p00 at "local" "local2"
+: "mkws6"
+dec "local2" by 1
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light1off"
+if "light1" = 1 then "mkws3"
+put c07 Floor p00 at "local" "local2"
+: "mkws3"
+inc "local2" by 2
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light2off"
+if "light2" = 1 then "mkws4"
+put c07 Floor p00 at "local" "local2"
+: "mkws4"
+dec "local2" by 3
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light3off"
+if "light3" = 1 then "mkws5"
+put c08 Floor p00 at "local" "local2"
+: "mkws5"
+inc "local2" by 4
+set "xpos" to "('local'+1)"
+set "ypos" to "local2"
+rel to counters
+if blocked west then "#light4off"
+if "light4" = 1 then "mkws7"
+put c08 Floor p00 at "local" "local2"
+: "mkws7"
+dec "local2" by 2
+goto "mkw3"
+
+
+: "mkn"
+set "local" to "tvx"
+set "local2" to "('tvy'-1)"
+set "xpos" to "tvx"
+set "ypos" to "tvy"
+rel to counters
+if blocked NORTH then "stop"
+put c0f Floor p00 at "local" "local2"
+
+: "mkn2"
+dec "local2" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "stop"
+put c0f Floor p00 at "local" "local2"
+dec "local" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light13off"
+if "light1" = 1 then "mkns1"
+put c07 Floor p00 at "local" "local2"
+: "mkns1"
+inc "local" by 2
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light24off"
+if "light2" = 1 then "mkns2"
+put c07 Floor p00 at "local" "local2"
+: "mkns2"
+dec "local" by 1
+
+: "mkn3"
+dec "local2" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light0off"
+if "light0" = 1 then "mkns6"
+put c0f Floor p00 at "local" "local2"
+: "mkns6"
+dec "local" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light1off"
+if "light1" = 1 then "mkns3"
+put c07 Floor p00 at "local" "local2"
+: "mkns3"
+inc "local" by 2
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light2off"
+if "light2" = 1 then "mkns4"
+put c07 Floor p00 at "local" "local2"
+: "mkns4"
+dec "local" by 3
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light3off"
+if "light3" = 1 then "mkns5"
+put c08 Floor p00 at "local" "local2"
+: "mkns5"
+inc "local" by 4
+set "xpos" to "local"
+set "ypos" to "('local2'+1)"
+rel to counters
+if blocked NORTH then "#light4off"
+if "light4" = 1 then "mkns7"
+put c08 Floor p00 at "local" "local2"
+: "mkns7"
+dec "local" by 2
+goto "mkn3"
+
+
+
+: "mks"
+set "local" to "tvx"
+set "local2" to "('tvy'+1)"
+set "xpos" to "tvx"
+set "ypos" to "tvy"
+rel to counters
+if blocked SOUTH then "stop"
+put c0f Floor p00 at "local" "local2"
+
+: "mks2"
+inc "local2" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "stop"
+put c0f Floor p00 at "local" "local2"
+dec "local" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light13off"
+if "light1" = 1 then "mkss1"
+put c07 Floor p00 at "local" "local2"
+: "mkss1"
+inc "local" by 2
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light24off"
+if "light2" = 1 then "mkss2"
+put c07 Floor p00 at "local" "local2"
+: "mkss2"
+dec "local" by 1
+
+: "mks3"
+inc "local2" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light0off"
+if "light0" = 1 then "mkss6"
+put c0f Floor p00 at "local" "local2"
+: "mkss6"
+dec "local" by 1
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light1off"
+if "light1" = 1 then "mkss3"
+put c07 Floor p00 at "local" "local2"
+: "mkss3"
+inc "local" by 2
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light2off"
+if "light2" = 1 then "mkss4"
+put c07 Floor p00 at "local" "local2"
+: "mkss4"
+dec "local" by 3
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light3off"
+if "light3" = 1 then "mkss5"
+put c08 Floor p00 at "local" "local2"
+: "mkss5"
+inc "local" by 4
+set "xpos" to "local"
+set "ypos" to "('local2'-1)"
+rel to counters
+if blocked SOUTH then "#light4off"
+if "light4" = 1 then "mkss7"
+put c08 Floor p00 at "local" "local2"
+: "mkss7"
+dec "local" by 2
+goto "mks3"
+
+
+
+: "#light0off"
+set "light0" to 1
+goto "#return"
+: "#light1off"
+set "light1" to 1
+goto "#return"
+: "#light2off"
+set "light2" to 1
+goto "#return"
+: "#light3off"
+set "light3" to 1
+goto "#return"
+: "#light4off"
+set "light4" to 1
+goto "#return"
+: "#light13off"
+goto "#light1off"
+goto "#light3off"
+goto "#return"
+: "#light24off"
+goto "#light2off"
+goto "#light4off"
+goto "#return"
+: "stop"
+end

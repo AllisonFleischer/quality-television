@@ -1,0 +1,10 @@
+overlay is on
+cycle 1
+write overlay c11 "````````````````````````" at 0 2
+write overlay c1f "Health:" at 1 2
+write overlay c1f "Level:" at 14 2
+: "l"
+write overlay c1e "&health&ÿ" at 9 2
+write overlay c1e "&level&ÿ" at 21 2
+cycle 1
+goto "l"

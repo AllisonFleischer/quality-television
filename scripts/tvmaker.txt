@@ -1,0 +1,101 @@
+. "Controls TV creation and destruction."
+scrollview position 0 2
+lockscroll
+end
+: "keyx"
+if "local" = 1 "end"
+if "playerfacedir" = 0 then "pn"
+if "playerfacedir" = 1 then "ps"
+if "playerfacedir" = 2 then "pe"
+if "playerfacedir" = 3 then "pw"
+end
+: "cantplace"
+sam 0 "sounds/cantplace.wav"
+end
+: "pn"
+rel to player
+if blocked NORTH then "cantplace"
+set "tvx" to "playerx"
+set "tvy" to "('playery'-1)"
+set "tvd" to 0
+change from c08 CustomBlock p09 to c07 Space p00
+put c08 CustomBlock p09 to NORTH of player
+sam 0 "sounds/placetv.wav"
+if "notvmusic" = 1 "skipmusic"
+set "local2" to "mod_position"
+mod "music/main2.wav"
+set "mod_position" to "local2"
+: "skipmusic"
+send "tvline" to "l"
+end
+: "ps"
+rel to player
+if blocked SOUTH then "cantplace"
+set "tvx" to "playerx"
+set "tvy" to "('playery'+1)"
+set "tvd" to 1
+change from c08 CustomBlock p09 to c07 Space p00
+put c08 CustomBlock p09 to SOUTH of player
+sam 0 "sounds/placetv.wav"
+if "notvmusic" = 1 "skipmusic1"
+set "local2" to "mod_position"
+mod "music/main2.wav"
+set "mod_position" to "local2"
+: "skipmusic1"
+send "tvline" to "l"
+end
+: "pe"
+rel to player
+if blocked EAST then "cantplace"
+set "tvx" to "('playerx'+1)"
+set "tvy" to "playery"
+set "tvd" to 2
+change from c08 CustomBlock p09 to c07 Space p00
+put c08 CustomBlock p09 to EAST of player
+sam 0 "sounds/placetv.wav"
+if "notvmusic" = 1 "skipmusic2"
+set "local2" to "mod_position"
+mod "music/main2.wav"
+set "mod_position" to "local2"
+: "skipmusic2"
+send "tvline" to "l"
+end
+: "pw"
+rel to player
+if blocked WEST then "cantplace"
+set "tvx" to "('playerx'-1)"
+set "tvy" to "playery"
+set "tvd" to 3
+change from c08 CustomBlock p09 to c07 Space p00
+put c08 CustomBlock p09 to WEST of player
+sam 0 "sounds/placetv.wav"
+if "notvmusic" = 1 "skipmusic3"
+set "local2" to "mod_position"
+mod "music/main2.wav"
+set "mod_position" to "local2"
+: "skipmusic3"
+send "tvline" to "l"
+end
+: "keyc"
+if "local" = 1 "end"
+: "removetv"
+if any c08 CustomBlock p09 "#dessound"
+change from c08 CustomBlock p09 to c07 Space p00
+send "tvline" to "l"
+end
+: "#dessound"
+sam 0 "sounds/destroytv.wav"
+if "notvmusic" = 1 "skipmusic4"
+set "local2" to "mod_position"
+mod "music/main1.wav"
+set "mod_position" to "local2"
+: "skipmusic4"
+goto "#return"
+
+: "stop"
+set "local" 1
+: "end"
+end
+: "go"
+set "local" 0
+end
