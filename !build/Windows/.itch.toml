@@ -1,0 +1,6 @@
+[[actions]]
+name = "play"
+path = "mzxlaunch.cmd"
+[[actions]]
+name = "Options"
+path = "config.txt"
