@@ -1,0 +1,7 @@
+Creating a build is slightly more complicated than running a Makefile (emphasis on "slightly"):
+
+1. Get the latest binary of Megazeux for the target platform
+2. Add the source code (excluding this folder)
+3. Add the contents of the corresponding build folder
+
+The end.
