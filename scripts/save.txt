@@ -1,8 +1,0 @@
-. "Autosaves."
-. "I think."
-. "It might be handled with editor scripts, making this worthless."
-end
-: "justentered"
-: "justloaded"
-cycle 1
-set "save.sav" to "save_game"
